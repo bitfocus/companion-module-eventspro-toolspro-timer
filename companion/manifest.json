@@ -1,28 +1,36 @@
 {
-	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
-	"type": "connection",
-	"id": "your-module-name",
-	"name": "your-module-name",
-	"shortname": "module-shortname",
-	"description": "A short one line description of your module",
-	"version": "0.0.0",
-	"license": "MIT",
-	"repository": "git+https://github.com/bitfocus/companion-module-your-module-name.git",
-	"bugs": "https://github.com/bitfocus/companion-module-your-module-name/issues",
-	"maintainers": [
-		{
-			"name": "Your name",
-			"email": "Your email"
-		}
-	],
-	"runtime": {
-		"type": "node26",
-		"api": "nodejs-ipc",
-		"apiVersion": "0.0.0",
-		"entrypoint": "../src/main.js"
-	},
-	"legacyIds": [],
-	"manufacturer": "Your company",
-	"products": ["Your product"],
-	"keywords": []
+  "$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
+  "id": "eventspro-toolspro-timer",
+  "name": "EventsPRO - Timer PRO",
+  "shortname": "Timer PRO",
+  "description": "Timer PRO control, named presets and live OSC feedback",
+  "version": "1.2.1",
+  "license": "MIT",
+  "repository": "git+https://github.com/bitfocus/companion-module-eventspro-toolspro-timer.git",
+  "bugs": "https://github.com/bitfocus/companion-module-eventspro-toolspro-timer/issues",
+  "maintainers": [
+    {
+      "name": "EventsPRO",
+      "url": "https://eventspro.es/"
+    }
+  ],
+  "legacyIds": [],
+  "runtime": {
+    "type": "node22",
+    "api": "nodejs-ipc",
+    "apiVersion": "0.0.0",
+    "entrypoint": "../src/main.js"
+  },
+  "manufacturer": "EventsPRO",
+  "products": [
+    "Timer PRO"
+  ],
+  "keywords": [
+    "timer",
+    "countdown",
+    "OSC",
+    "speaker",
+    "Stream Deck"
+  ],
+  "type": "connection"
 }

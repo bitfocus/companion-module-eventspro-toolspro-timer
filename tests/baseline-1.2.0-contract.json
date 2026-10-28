@@ -1,0 +1,632 @@
+{
+  "es": {
+    "actions": {
+      "start": {
+        "name": "Iniciar / continuar",
+        "options": []
+      },
+      "pause": {
+        "name": "Pausar",
+        "options": []
+      },
+      "reset": {
+        "name": "Reiniciar",
+        "options": []
+      },
+      "message/clear": {
+        "name": "Quitar aviso",
+        "options": []
+      },
+      "lap": {
+        "name": "Guardar vuelta",
+        "options": []
+      },
+      "duration": {
+        "name": "Preparar duración (segundos)",
+        "options": [
+          {
+            "type": "number",
+            "id": "value",
+            "label": "Segundos",
+            "min": 1,
+            "max": 86400,
+            "default": 600
+          }
+        ]
+      },
+      "adjust": {
+        "name": "Ajustar tiempo (segundos)",
+        "options": [
+          {
+            "type": "number",
+            "id": "value",
+            "label": "Segundos",
+            "min": -86400,
+            "max": 86400,
+            "default": 60
+          }
+        ]
+      },
+      "message": {
+        "name": "Enviar aviso",
+        "options": [
+          {
+            "type": "textinput",
+            "id": "value",
+            "label": "Texto",
+            "default": "",
+            "useVariables": true
+          }
+        ]
+      },
+      "title": {
+        "name": "Nombre del ponente",
+        "options": [
+          {
+            "type": "textinput",
+            "id": "value",
+            "label": "Texto",
+            "default": "",
+            "useVariables": true
+          }
+        ]
+      },
+      "mode": {
+        "name": "Cambiar modo",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "value",
+            "label": "Modo",
+            "default": "down",
+            "choices": [
+              {
+                "id": "down",
+                "label": "Cuenta atrás"
+              },
+              {
+                "id": "up",
+                "label": "Cronómetro"
+              },
+              {
+                "id": "clock",
+                "label": "Reloj"
+              }
+            ]
+          }
+        ]
+      },
+      "preset": {
+        "name": "Cargar intervención por nombre",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "presetId",
+            "label": "Día / sesión / ponente",
+            "default": "slot-stable",
+            "choices": [
+              {
+                "id": "slot-stable",
+                "label": "Día 1 / Sala A / Ponente confirmado"
+              }
+            ]
+          }
+        ]
+      },
+      "preset/start": {
+        "name": "Cargar e iniciar intervención",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "presetId",
+            "label": "Día / sesión / ponente",
+            "default": "slot-stable",
+            "choices": [
+              {
+                "id": "slot-stable",
+                "label": "Día 1 / Sala A / Ponente confirmado"
+              }
+            ]
+          }
+        ]
+      },
+      "message/preset": {
+        "name": "Enviar aviso guardado",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "presetId",
+            "label": "Aviso guardado",
+            "default": "msg-stable",
+            "choices": [
+              {
+                "id": "msg-stable",
+                "label": "Finaliza"
+              }
+            ]
+          }
+        ]
+      },
+      "refresh": {
+        "name": "Actualizar intervenciones",
+        "options": []
+      }
+    },
+    "feedbacks": {
+      "mode": {
+        "type": "boolean",
+        "name": "Modo seleccionado",
+        "defaultStyle": {
+          "bgcolor": 1276482,
+          "color": 16777215
+        },
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "value",
+            "label": "Modo",
+            "default": "down",
+            "choices": [
+              {
+                "id": "down",
+                "label": "Cuenta atrás"
+              },
+              {
+                "id": "up",
+                "label": "Cronómetro"
+              },
+              {
+                "id": "clock",
+                "label": "Reloj"
+              }
+            ]
+          }
+        ]
+      },
+      "connected": {
+        "type": "boolean",
+        "name": "Timer conectado",
+        "defaultStyle": {
+          "bgcolor": 1276482,
+          "color": 16777215
+        },
+        "options": []
+      },
+      "running": {
+        "type": "boolean",
+        "name": "En marcha",
+        "defaultStyle": {
+          "bgcolor": 1276482,
+          "color": 16777215
+        },
+        "options": []
+      },
+      "phase": {
+        "type": "boolean",
+        "name": "Estado del contador",
+        "defaultStyle": {
+          "bgcolor": 14895176,
+          "color": 16777215
+        },
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "phase",
+            "label": "Estado",
+            "default": "over",
+            "choices": [
+              {
+                "id": "normal",
+                "label": "Normal"
+              },
+              {
+                "id": "warning",
+                "label": "Aviso amarillo"
+              },
+              {
+                "id": "critical",
+                "label": "Aviso rojo"
+              },
+              {
+                "id": "over",
+                "label": "Tiempo cumplido"
+              },
+              {
+                "id": "clock",
+                "label": "Reloj"
+              }
+            ]
+          }
+        ]
+      },
+      "message": {
+        "type": "boolean",
+        "name": "Aviso visible",
+        "defaultStyle": {
+          "bgcolor": 16768768,
+          "color": 1054752
+        },
+        "options": []
+      }
+    },
+    "variables": [
+      {
+        "variableId": "time",
+        "name": "time"
+      },
+      {
+        "variableId": "seconds",
+        "name": "seconds"
+      },
+      {
+        "variableId": "title",
+        "name": "title"
+      },
+      {
+        "variableId": "message",
+        "name": "message"
+      },
+      {
+        "variableId": "mode",
+        "name": "mode"
+      },
+      {
+        "variableId": "phase",
+        "name": "phase"
+      },
+      {
+        "variableId": "connected",
+        "name": "connected"
+      },
+      {
+        "variableId": "running",
+        "name": "running"
+      },
+      {
+        "variableId": "preset_count",
+        "name": "preset_count"
+      },
+      {
+        "variableId": "message_preset_count",
+        "name": "message_preset_count"
+      },
+      {
+        "variableId": "error",
+        "name": "error"
+      }
+    ],
+    "presets": {
+      "start": "d586e39122a0d65c76291b152104e8e4a4245fd2ee91c880efeb2a18f756aaba",
+      "pause": "54adabc6ec0fd1a3fc6e2f23e0351c8797ed516be45d8209c4f294b5ccf7f83d",
+      "reset": "9452457bf1907e9299116069c684a7ff365954a8a4561e9897dc36a6588956c6",
+      "plus": "bb97b75ab2863fe380283a33122a3a92efbec4cbfe4dd57816481d4c9e8c7823",
+      "minus": "3c3afd7a9295487e2db8b97cab5148125a976f48e30d23a8020c41465c574da7",
+      "clear": "45254a3e631355e9b147eb5817bb03e6caca3c290d351b6993fdf062b3bd02d2",
+      "refresh": "52f783c090f201b455cae21ec3ab825d958ee27c4833ebdc92608f80e8dd2f06",
+      "mode-down": "cdbaf13adc9b8c0e7e713eda659a4b24407b89fe9eecf4ad1665b793bd229ade",
+      "mode-up": "b5c7495fcbdd295d383342348d0339d4ae337eba85fce6a24b881d155f653b4f",
+      "mode-clock": "b62f094db0175dd5b1ef050c5e78248274d3db55f0ce25104819d4745c82300c",
+      "duration-5": "5bdfdd7fcf8c835b762f9d839bbfca9cb0a7ae78374aac8fb789d74421b9c869",
+      "duration-10": "77aab4c86ea7d964c5ffe10b3e981a67a152ec3e17840b420e2a9bb5a2aa276a",
+      "duration-30": "a878a515fcfcf972c671fa918d7390399c8e0eafb2b1bb44d82d024f9cc06fc9",
+      "time": "07e0669b867bbd686c93cd1253a8af92e1b0c8678db810418180c4462bc12a56",
+      "preset-slot-stable": "329dfd65bcc542b50143a8ab4d6196c8fb7c38df2e2b602629bf1d6c7428ec8c",
+      "message/preset-msg-stable": "e17ec5815459e1bec274eb83cab870ea13f64c631d43a691e8946f2e146759e1"
+    }
+  },
+  "en": {
+    "actions": {
+      "start": {
+        "name": "Start / resume",
+        "options": []
+      },
+      "pause": {
+        "name": "Pause",
+        "options": []
+      },
+      "reset": {
+        "name": "Reset",
+        "options": []
+      },
+      "message/clear": {
+        "name": "Clear message",
+        "options": []
+      },
+      "lap": {
+        "name": "Record lap",
+        "options": []
+      },
+      "duration": {
+        "name": "Set duration (seconds)",
+        "options": [
+          {
+            "type": "number",
+            "id": "value",
+            "label": "Seconds",
+            "min": 1,
+            "max": 86400,
+            "default": 600
+          }
+        ]
+      },
+      "adjust": {
+        "name": "Adjust time (seconds)",
+        "options": [
+          {
+            "type": "number",
+            "id": "value",
+            "label": "Seconds",
+            "min": -86400,
+            "max": 86400,
+            "default": 60
+          }
+        ]
+      },
+      "message": {
+        "name": "Send message",
+        "options": [
+          {
+            "type": "textinput",
+            "id": "value",
+            "label": "Text",
+            "default": "",
+            "useVariables": true
+          }
+        ]
+      },
+      "title": {
+        "name": "Speaker name",
+        "options": [
+          {
+            "type": "textinput",
+            "id": "value",
+            "label": "Text",
+            "default": "",
+            "useVariables": true
+          }
+        ]
+      },
+      "mode": {
+        "name": "Change mode",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "value",
+            "label": "Mode",
+            "default": "down",
+            "choices": [
+              {
+                "id": "down",
+                "label": "Countdown"
+              },
+              {
+                "id": "up",
+                "label": "Stopwatch"
+              },
+              {
+                "id": "clock",
+                "label": "Clock"
+              }
+            ]
+          }
+        ]
+      },
+      "preset": {
+        "name": "Load named speaker slot",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "presetId",
+            "label": "Day / session / speaker",
+            "default": "slot-stable",
+            "choices": [
+              {
+                "id": "slot-stable",
+                "label": "Día 1 / Sala A / Ponente confirmado"
+              }
+            ]
+          }
+        ]
+      },
+      "preset/start": {
+        "name": "Load and start speaker slot",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "presetId",
+            "label": "Day / session / speaker",
+            "default": "slot-stable",
+            "choices": [
+              {
+                "id": "slot-stable",
+                "label": "Día 1 / Sala A / Ponente confirmado"
+              }
+            ]
+          }
+        ]
+      },
+      "message/preset": {
+        "name": "Send saved message",
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "presetId",
+            "label": "Saved message",
+            "default": "msg-stable",
+            "choices": [
+              {
+                "id": "msg-stable",
+                "label": "Finaliza"
+              }
+            ]
+          }
+        ]
+      },
+      "refresh": {
+        "name": "Refresh speaker slots",
+        "options": []
+      }
+    },
+    "feedbacks": {
+      "mode": {
+        "type": "boolean",
+        "name": "Selected mode",
+        "defaultStyle": {
+          "bgcolor": 1276482,
+          "color": 16777215
+        },
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "value",
+            "label": "Mode",
+            "default": "down",
+            "choices": [
+              {
+                "id": "down",
+                "label": "Countdown"
+              },
+              {
+                "id": "up",
+                "label": "Stopwatch"
+              },
+              {
+                "id": "clock",
+                "label": "Clock"
+              }
+            ]
+          }
+        ]
+      },
+      "connected": {
+        "type": "boolean",
+        "name": "Timer connected",
+        "defaultStyle": {
+          "bgcolor": 1276482,
+          "color": 16777215
+        },
+        "options": []
+      },
+      "running": {
+        "type": "boolean",
+        "name": "Running",
+        "defaultStyle": {
+          "bgcolor": 1276482,
+          "color": 16777215
+        },
+        "options": []
+      },
+      "phase": {
+        "type": "boolean",
+        "name": "Timer phase",
+        "defaultStyle": {
+          "bgcolor": 14895176,
+          "color": 16777215
+        },
+        "options": [
+          {
+            "type": "dropdown",
+            "id": "phase",
+            "label": "Phase",
+            "default": "over",
+            "choices": [
+              {
+                "id": "normal",
+                "label": "Normal"
+              },
+              {
+                "id": "warning",
+                "label": "Yellow warning"
+              },
+              {
+                "id": "critical",
+                "label": "Red warning"
+              },
+              {
+                "id": "over",
+                "label": "Time up"
+              },
+              {
+                "id": "clock",
+                "label": "Clock"
+              }
+            ]
+          }
+        ]
+      },
+      "message": {
+        "type": "boolean",
+        "name": "Message visible",
+        "defaultStyle": {
+          "bgcolor": 16768768,
+          "color": 1054752
+        },
+        "options": []
+      }
+    },
+    "variables": [
+      {
+        "variableId": "time",
+        "name": "time"
+      },
+      {
+        "variableId": "seconds",
+        "name": "seconds"
+      },
+      {
+        "variableId": "title",
+        "name": "title"
+      },
+      {
+        "variableId": "message",
+        "name": "message"
+      },
+      {
+        "variableId": "mode",
+        "name": "mode"
+      },
+      {
+        "variableId": "phase",
+        "name": "phase"
+      },
+      {
+        "variableId": "connected",
+        "name": "connected"
+      },
+      {
+        "variableId": "running",
+        "name": "running"
+      },
+      {
+        "variableId": "preset_count",
+        "name": "preset_count"
+      },
+      {
+        "variableId": "message_preset_count",
+        "name": "message_preset_count"
+      },
+      {
+        "variableId": "error",
+        "name": "error"
+      }
+    ],
+    "presets": {
+      "start": "c56e365744dcbf924bad4ed2f9b52bf3db9b050cfcd2af7d5bc5856507c2034f",
+      "pause": "21cc8486bb873f18d85b3b9c54ec421e28c738db09212f4885b1ba681c742576",
+      "reset": "8d47cdb0f8c565f7ebec568c027927776f1aa4c0e9eb807f662e89d62cd26672",
+      "plus": "8ccb72645d0efd451991e28a3ae3181976366d7c8517e61dac3be20d8662a231",
+      "minus": "c2d22bfb547c342905362f6ed5b85eb3e201f3251ea72732964087ec89e5fc74",
+      "clear": "5b94702b6600d660dab2b90bc46c663bce61e4010cf6bfc47d98ad8429d5145b",
+      "refresh": "154e314ea5995f9e8b47dccc2a523816e7df43369c3b84bba84f614d03b933ac",
+      "mode-down": "7a9df3ea0c9072329f37ae0efba5df768118114f385a8ad815ad56a89688c403",
+      "mode-up": "146dc5823c13709125f5c7e6934ed36114ecdc9fac6c4a89f8896baba580e07e",
+      "mode-clock": "9f53ff1d278a998230fbcdedc785a32b6683ac4eb74ff2da218234f2eda4dbf1",
+      "duration-5": "b9d74cdb75265c89bf88f6f5b0d8e59e523ee5ee2668216c6259f25a304b53ff",
+      "duration-10": "52dfb7898297b672603bbc592d970ad9bc8deab9b9069a33f2959188d1800b86",
+      "duration-30": "8ff67d475e29a4f2a3153cfa977cb01d4a50309d783eb462d9875b383f6f482b",
+      "time": "1ad0c134f75bf46964c78bcfe85adf86015d77675b1c7b2cc9cf9abdeef571af",
+      "preset-slot-stable": "e518e553648817f8f4075952d76a6b399b9052e08fc79062aaf4c83017c339ea",
+      "message/preset-msg-stable": "2f74b4275208cc7e85ebab1a0a01e04b1b4fcb80469805b30530eb3e410912dc"
+    }
+  }
+}
