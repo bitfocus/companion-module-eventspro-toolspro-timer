@@ -1,0 +1,81 @@
+/* Timer memories expand with the document; no nested scrolling or clipped actions. */
+.st-app:not(.st-output) .st-agenda,
+.st-app:not(.st-output) .st-message-presets,
+.st-app .st-agenda-list,
+.st-app .st-message-preset-list,
+.st-app .st-preset-list {
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+  scrollbar-gutter:auto!important;
+  min-width:0;
+}
+.st-app .st-agenda-entry,
+.st-app .st-message-preset-entry {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 44px;
+  align-items:stretch;
+  gap:8px;
+  width:100%;
+  min-width:0;
+}
+.st-app .st-agenda-load,
+.st-app .st-message-preset-load {
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  background:#101a22!important;
+  color:#ffe000!important;
+  border:1px solid #61727f;
+  border-left:3px solid #ffe000;
+}
+.st-app .st-agenda-load span {color:#f4f6f8!important;}
+.st-app .st-agenda-load[aria-pressed=true] {
+  background:#ffe000!important;
+  color:#101820!important;
+  border-color:#ffe000;
+}
+.st-app .st-agenda-load[aria-pressed=true] span {color:#101820!important;}
+.st-app .st-agenda-delete,
+.st-app .st-message-preset-delete {
+  width:44px;
+  min-width:44px;
+  min-height:44px;
+  padding:0;
+  background:#101a22;
+  color:#ffe000;
+  border:1px solid #61727f;
+}
+.st-app .st-agenda-delete:hover,
+.st-app .st-agenda-delete:focus-visible,
+.st-app .st-message-preset-delete:hover,
+.st-app .st-message-preset-delete:focus-visible {
+  border-color:#ffe000;
+  color:#ffe000;
+}
+
+/* Time memories and saved messages share a row and keep independent top alignment. */
+.st-app:not(.st-output) .st-layout {
+  display:grid!important;
+  grid-template-columns:minmax(180px,220px) minmax(300px,1fr) minmax(180px,220px) minmax(180px,220px)!important;
+  align-items:start!important;
+  gap:16px!important;
+}
+.st-app:not(.st-output) .st-controls {grid-column:1!important;grid-row:1!important;}
+.st-app:not(.st-output) .st-viewer {grid-column:2!important;grid-row:1!important;min-width:0;}
+.st-app:not(.st-output) .st-agenda {grid-column:3!important;grid-row:1!important;align-self:start;}
+.st-app:not(.st-output) .st-message-presets {grid-column:4!important;grid-row:1!important;align-self:start;}
+@media(max-width:1099px) {
+  .st-app:not(.st-output) .st-layout {grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  .st-app:not(.st-output) .st-controls {grid-column:1!important;grid-row:1!important;}
+  .st-app:not(.st-output) .st-viewer {grid-column:2!important;grid-row:1!important;}
+  .st-app:not(.st-output) .st-agenda {grid-column:1!important;grid-row:2!important;}
+  .st-app:not(.st-output) .st-message-presets {grid-column:2!important;grid-row:2!important;}
+}
+@media(max-width:700px) {
+  .st-app:not(.st-output) .st-viewer {grid-column:1/-1!important;grid-row:1!important;}
+  .st-app:not(.st-output) .st-controls {grid-column:1/-1!important;grid-row:2!important;}
+  .st-app:not(.st-output) .st-agenda {grid-column:1!important;grid-row:3!important;padding:10px;}
+  .st-app:not(.st-output) .st-message-presets {grid-column:2!important;grid-row:3!important;padding:10px;}
+}

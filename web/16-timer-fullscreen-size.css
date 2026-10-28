@@ -1,0 +1,135 @@
+/* Speaker fullscreen uses the display, independently of the control preview. */
+.st-app:not(.st-output) .st-stage:fullscreen,
+.st-app.st-output .st-stage:fullscreen {
+  box-sizing:border-box!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:0!important;
+  max-height:none!important;
+  max-width:none!important;
+  aspect-ratio:auto!important;
+  padding:3dvh 3vw!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:1.5dvh!important;
+  container-type:inline-size;
+  --st-fullscreen-digit-height:42dvh;
+}
+.st-app .st-stage:fullscreen .st-title {
+  font-size:clamp(24px,min(4cqw,6dvh),110px)!important;
+  line-height:1.15!important;
+  margin:0!important;
+  flex-shrink:0;
+}
+.st-app:not(.st-output) .st-stage:fullscreen .st-digits,
+.st-app.st-output .st-stage:fullscreen .st-digits,
+.st-app .st-stage:fullscreen:has(.st-message:not([hidden])) .st-digits,
+.st-app:not(.st-output) .st-stage:fullscreen:has(.st-message:not([hidden])) .st-digits {
+  font-size:min(var(--st-fullscreen-digit-width,18cqw),var(--st-fullscreen-digit-height))!important;
+  line-height:1.05!important;
+  margin:0!important;
+  max-width:100%;
+  flex-shrink:0;
+}
+.st-app .st-stage:fullscreen .st-status {
+  font-size:clamp(18px,3dvh,64px)!important;
+  margin:0!important;
+  flex-shrink:0;
+}
+.st-app .st-stage:fullscreen .st-small-clock {
+  position:static!important;
+  font-size:clamp(18px,3dvh,64px)!important;
+  flex-shrink:0;
+}
+.st-app .st-stage:fullscreen .st-message {
+  font-size:clamp(22px,min(4cqw,4dvh),96px)!important;
+  line-height:1.2!important;
+  margin:0!important;
+  padding:1dvh 1.5vw!important;
+  max-width:96%;
+  flex-shrink:0;
+}
+.st-app .st-stage:fullscreen .st-lap-display {
+  position:static!important;
+  width:min(90%,1100px)!important;
+  max-height:20dvh!important;
+  margin:0!important;
+  flex-shrink:0;
+}
+.st-app .st-stage:fullscreen:has(.st-message:not([hidden])),
+.st-app .st-stage:fullscreen:has(.st-lap-display:not([hidden])) {
+  --st-fullscreen-digit-height:28dvh;
+}
+.st-app .st-stage:fullscreen:has(.st-message:not([hidden])):has(.st-lap-display:not([hidden])) {
+  --st-fullscreen-digit-height:20dvh;
+}
+
+/* Speaker fullscreen uses the display, independently of the control preview. */
+.st-app:not(.st-output) .st-stage[data-native-fullscreen],
+.st-app.st-output .st-stage[data-native-fullscreen] {
+  box-sizing:border-box!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:0!important;
+  max-height:none!important;
+  max-width:none!important;
+  aspect-ratio:auto!important;
+  padding:3dvh 3vw!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:1.5dvh!important;
+  container-type:inline-size;
+  --st-fullscreen-digit-height:42dvh;
+}
+.st-app .st-stage[data-native-fullscreen] .st-title {
+  font-size:clamp(24px,min(4cqw,6dvh),110px)!important;
+  line-height:1.15!important;
+  margin:0!important;
+  flex-shrink:0;
+}
+.st-app:not(.st-output) .st-stage[data-native-fullscreen] .st-digits,
+.st-app.st-output .st-stage[data-native-fullscreen] .st-digits,
+.st-app .st-stage[data-native-fullscreen]:has(.st-message:not([hidden])) .st-digits,
+.st-app:not(.st-output) .st-stage[data-native-fullscreen]:has(.st-message:not([hidden])) .st-digits {
+  font-size:min(var(--st-fullscreen-digit-width,18cqw),var(--st-fullscreen-digit-height))!important;
+  line-height:1.05!important;
+  margin:0!important;
+  max-width:100%;
+  flex-shrink:0;
+}
+.st-app .st-stage[data-native-fullscreen] .st-status {
+  font-size:clamp(18px,3dvh,64px)!important;
+  margin:0!important;
+  flex-shrink:0;
+}
+.st-app .st-stage[data-native-fullscreen] .st-small-clock {
+  position:static!important;
+  font-size:clamp(18px,3dvh,64px)!important;
+  flex-shrink:0;
+}
+.st-app .st-stage[data-native-fullscreen] .st-message {
+  font-size:clamp(22px,min(4cqw,4dvh),96px)!important;
+  line-height:1.2!important;
+  margin:0!important;
+  padding:1dvh 1.5vw!important;
+  max-width:96%;
+  flex-shrink:0;
+}
+.st-app .st-stage[data-native-fullscreen] .st-lap-display {
+  position:static!important;
+  width:min(90%,1100px)!important;
+  max-height:20dvh!important;
+  margin:0!important;
+  flex-shrink:0;
+}
+.st-app .st-stage[data-native-fullscreen]:has(.st-message:not([hidden])),
+.st-app .st-stage[data-native-fullscreen]:has(.st-lap-display:not([hidden])) {
+  --st-fullscreen-digit-height:28dvh;
+}
+.st-app .st-stage[data-native-fullscreen]:has(.st-message:not([hidden])):has(.st-lap-display:not([hidden])) {
+  --st-fullscreen-digit-height:20dvh;
+}
+
+html:has(.st-stage[data-native-fullscreen]),body:has(.st-stage[data-native-fullscreen]),.st-output:has(.st-stage[data-native-fullscreen]){height:100%;width:100%;padding:0!important;margin:0!important;overflow:hidden}.st-output:has(.st-stage[data-native-fullscreen]) .st-view-buttons{display:none!important}.st-stage[data-native-fullscreen]{border-radius:0!important}

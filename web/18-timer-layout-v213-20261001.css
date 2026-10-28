@@ -1,0 +1,110 @@
+/* Timer: settings, wide stage and two compact preset panels. */
+.st-app:not(.st-output) .st-agenda-add{width:100%;margin-top:10px}
+.st-app:not(.st-output) .st-agenda-add[open]>summary{margin-bottom:5px}
+.st-app:not(.st-output) .st-controls,.st-app:not(.st-output) .st-agenda,.st-app:not(.st-output) .st-message-presets{min-width:0}
+.st-app:not(.st-output) .st-agenda-list,.st-app:not(.st-output) .st-message-preset-list{min-height:0;max-height:min(24dvh,220px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+@media(min-width:1001px){
+ .st-app:not(.st-output) .st-layout,.st-app.st-clock-mode:not(.st-output) .st-layout{display:grid!important;grid-template-columns:minmax(250px,290px) minmax(0,1fr) minmax(245px,275px)!important;gap:14px;align-items:start}
+ .st-app:not(.st-output) .st-controls{grid-column:1;grid-row:1 / span 2}
+ .st-app:not(.st-output) .st-viewer{grid-column:2;grid-row:1 / span 2;min-width:0}
+ .st-app:not(.st-output) .st-agenda{grid-column:3;grid-row:1}
+ .st-app:not(.st-output) .st-message-presets{grid-column:3;grid-row:2}
+}
+@media(min-width:801px) and (max-width:1000px){
+ .st-app:not(.st-output) .st-layout,.st-app.st-clock-mode:not(.st-output) .st-layout{display:grid!important;grid-template-columns:minmax(225px,280px) minmax(0,1fr)!important;gap:14px;align-items:start}
+ .st-app:not(.st-output) .st-controls{grid-column:1;grid-row:1 / span 3}
+ .st-app:not(.st-output) .st-viewer{grid-column:2;grid-row:1;min-width:0}
+ .st-app:not(.st-output) .st-agenda{grid-column:2;grid-row:2}
+ .st-app:not(.st-output) .st-message-presets{grid-column:2;grid-row:3}
+}
+@media(max-width:800px){
+ .st-app:not(.st-output) .st-layout{display:flex!important;flex-direction:column!important}
+ .st-app:not(.st-output) .st-viewer{order:0;width:100%}
+ .st-app:not(.st-output) .st-controls{order:1;width:100%}
+ .st-app:not(.st-output) .st-agenda{order:2;width:100%}
+ .st-app:not(.st-output) .st-message-presets{order:3;width:100%}
+}
+
+.st-app .st-view-icon-group{justify-content:flex-end;gap:8px;margin-top:10px}
+.st-app .st-view-icon-group .st-view-icon{flex:0 0 48px;width:48px;min-width:48px;max-width:48px;height:48px;min-height:48px;padding:10px;display:grid;place-items:center}
+.st-app .st-view-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.st-app:not(.st-output){position:relative}
+.st-app:not(.st-output)>.st-view-icon-group{position:absolute;top:81px;right:0;z-index:3;margin:0}
+@media(max-width:800px){.st-app:not(.st-output)>.st-view-icon-group{position:static;margin:0 0 10px;justify-content:flex-end}}
+
+/* The three modes share one stage and one presenter-message card geometry. */
+.st-app:not(.st-output) .st-stage,
+.st-app.st-clock-mode:not(.st-output) .st-stage,
+.st-app.st-stopwatch-mode:not(.st-output) .st-stage{
+  box-sizing:border-box;
+  height:clamp(300px,44dvh,560px)!important;
+  min-height:clamp(300px,44dvh,560px)!important;
+  max-height:clamp(300px,44dvh,560px)!important;
+  aspect-ratio:auto!important;
+}
+.st-app:not(.st-output) .st-viewer .st-message-panel,
+.st-app.st-clock-mode:not(.st-output) .st-viewer .st-message-panel{
+  box-sizing:border-box;
+  flex:0 0 180px!important;
+  height:180px!important;
+  min-height:180px!important;
+  max-height:180px!important;
+  margin:10px 0 0!important;
+}
+.st-app.st-clock-mode:not(.st-output) .st-message-panel textarea{min-height:54px!important}
+.st-app:not(.st-output) .st-stage:fullscreen{
+  height:100dvh!important;
+  min-height:100dvh!important;
+  max-height:none!important;
+}
+.st-app:not(.st-output) .st-viewer .st-message-panel textarea,
+.st-app.st-clock-mode:not(.st-output) .st-viewer .st-message-panel textarea{
+  box-sizing:border-box;
+  flex:0 0 80px!important;
+  height:80px!important;
+  min-height:80px!important;
+  max-height:80px!important;
+}
+@media(max-width:800px){
+ .st-app:not(.st-output) .st-viewer .st-message-panel,
+ .st-app.st-clock-mode:not(.st-output) .st-viewer .st-message-panel{
+  flex:0 0 240px!important;
+  height:240px!important;
+  min-height:240px!important;
+  max-height:240px!important;
+ }
+}
+
+.st-app .st-yellow-label .st-threshold-name,.st-app .st-red-label .st-threshold-name{display:block;font-weight:700;line-height:1.2;text-transform:uppercase}
+.st-app .st-yellow-label .st-threshold-unit,.st-app .st-red-label .st-threshold-unit{display:block;line-height:1.2}
+
+.st-app .st-threshold-swatch{display:block;width:22px;height:22px;border-radius:5px;border:1px solid currentColor}
+.st-app .st-yellow-label .st-threshold-swatch{background:#ffe000;box-shadow:0 0 0 2px #ffe00022}
+.st-app .st-red-label .st-threshold-swatch{background:#ff5b64;box-shadow:0 0 0 2px #ff5b6422}
+
+.st-app .st-yellow-label,.st-app .st-red-label{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:9px;align-items:center}
+.st-app .st-yellow-label input,.st-app .st-red-label input{grid-column:1/-1}
+
+/* Keep the message card anchored when clock mode hides transport controls. */
+.st-app.st-clock-mode:not(.st-output) .st-viewer .st-transport[hidden]{display:grid!important;visibility:hidden;pointer-events:none}
+.st-app:not(.st-output) .st-viewer .st-message-panel,.st-app.st-clock-mode:not(.st-output) .st-viewer .st-message-panel{width:100%!important;max-width:none!important;flex-shrink:0}
+
+/* Keep the viewer geometry fixed across all Timer modes. */
+.st-app.st-clock-mode:not(.st-output) .st-viewer .st-transport[hidden]{width:100%!important;max-width:none!important;margin:10px 0 0!important;flex:0 0 40px!important;height:40px!important}
+.st-app.st-stopwatch-mode:not(.st-output) .st-transport{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+@media(max-width:700px){.st-app.st-stopwatch-mode:not(.st-output) .st-transport{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+
+.st-app.st-clock-mode:not(.st-output) .st-viewer{row-gap:0!important}
+
+.st-app .st-lap-row{width:100%;min-height:0;max-width:none;display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr);gap:4px;align-items:center;padding:6px 4px;text-align:left;background:transparent;border:1px solid transparent;border-bottom-color:#283b48;border-radius:4px;color:#f5f7fa;font:12px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.st-app .st-lap-row[aria-pressed=true]{background:#3d3917;border-color:#ffe000}
+.st-app.st-clock-mode:not(.st-output) .st-viewer{row-gap:0!important}
+
+@media(max-width:700px){.st-app.st-clock-mode:not(.st-output) .st-viewer .st-transport[hidden]{margin-top:16px!important;height:106px!important;flex-basis:106px!important}}
+
+@media(max-width:350px){.ep-app .st-app.st-stopwatch-mode:not(.st-output) .st-transport button{height:48px;min-height:48px;padding:8px 4px!important;font-size:12px!important;white-space:nowrap!important}}
+
+/* Clock uses the same internal alert-card layout as the timer modes. */
+.st-app.st-clock-mode:not(.st-output) .st-viewer .st-message-panel{display:flex!important;flex-direction:column!important}
+.st-app.st-clock-mode:not(.st-output) .st-viewer .st-message-panel .st-view-buttons{margin-top:8px!important}
