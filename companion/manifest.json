@@ -4,7 +4,7 @@
   "name": "EventsPRO - Timer PRO",
   "shortname": "Timer PRO",
   "description": "Timer PRO control, named presets and live OSC feedback",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "repository": "git+https://github.com/bitfocus/companion-module-eventspro-toolspro-timer.git",
   "bugs": "https://github.com/bitfocus/companion-module-eventspro-toolspro-timer/issues",
@@ -29,8 +29,7 @@
     "timer",
     "countdown",
     "OSC",
-    "speaker",
-    "Stream Deck"
+    "speaker"
   ],
   "type": "connection"
 }

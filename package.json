@@ -1,12 +1,13 @@
 {
   "name": "companion-module-eventspro-toolspro-timer",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "private": true,
   "description": "EventsPRO - Timer PRO",
   "main": "src/main.js",
   "scripts": {
     "package": "companion-module-build",
-    "test": "node --test tests/lan.test.cjs tests/compatibility.test.cjs"
+    "test": "node --test tests/lan.test.cjs tests/compatibility.test.cjs",
+    "format": "prettier -w ."
   },
   "license": "MIT",
   "engines": {
@@ -17,7 +18,8 @@
     "@companion-module/base": "1.13.6"
   },
   "devDependencies": {
-    "@companion-module/tools": "2.8.0"
+    "@companion-module/tools": "2.8.0",
+    "prettier": "^3.7.4"
   },
   "repository": {
     "type": "git",
@@ -27,5 +29,6 @@
     "url": "https://github.com/bitfocus/companion-module-eventspro-toolspro-timer/issues"
   },
   "homepage": "https://github.com/bitfocus/companion-module-eventspro-toolspro-timer#readme",
-  "packageManager": "yarn@4.18.1"
+  "packageManager": "yarn@4.18.1",
+  "prettier": "@companion-module/tools/.prettierrc.json"
 }
