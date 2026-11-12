@@ -1,35 +1,28 @@
 {
-  "$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
-  "id": "eventspro-toolspro-timer",
-  "name": "EventsPRO - Timer PRO",
-  "shortname": "Timer PRO",
-  "description": "Timer PRO control, named presets and live OSC feedback",
-  "version": "1.2.2",
-  "license": "MIT",
-  "repository": "git+https://github.com/bitfocus/companion-module-eventspro-toolspro-timer.git",
-  "bugs": "https://github.com/bitfocus/companion-module-eventspro-toolspro-timer/issues",
-  "maintainers": [
-    {
-      "name": "EventsPRO",
-      "url": "https://eventspro.es/"
-    }
-  ],
-  "legacyIds": [],
-  "runtime": {
-    "type": "node22",
-    "api": "nodejs-ipc",
-    "apiVersion": "0.0.0",
-    "entrypoint": "../src/main.js"
-  },
-  "manufacturer": "EventsPRO",
-  "products": [
-    "Timer PRO"
-  ],
-  "keywords": [
-    "timer",
-    "countdown",
-    "OSC",
-    "speaker"
-  ],
-  "type": "connection"
+	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
+	"id": "eventspro-toolspro-timer",
+	"name": "EventsPRO - Timer PRO",
+	"shortname": "Timer PRO",
+	"description": "Timer PRO with local-network and OSC control, speaker output visibility and chroma presets",
+	"version": "1.3.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-eventspro-toolspro-timer.git",
+	"bugs": "https://github.com/bitfocus/companion-module-eventspro-toolspro-timer/issues",
+	"maintainers": [
+		{
+			"name": "EventsPRO",
+			"url": "https://eventspro.es/"
+		}
+	],
+	"legacyIds": [],
+	"runtime": {
+		"type": "node22",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../src/main.js"
+	},
+	"manufacturer": "EventsPRO",
+	"products": ["Timer PRO"],
+	"keywords": ["timer", "countdown", "OSC", "speaker"],
+	"type": "connection"
 }
