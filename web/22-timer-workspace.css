@@ -1,0 +1,111 @@
+/* One saved-items workspace; the presenter controls stay visible independently. */
+.st-app.st-workspace-v2:not(.st-output) .st-layout{display:grid!important;grid-template-columns:minmax(220px,260px) minmax(260px,340px) minmax(0,1fr)!important;gap:16px!important;align-items:start!important}
+.st-app.st-workspace-v2:not(.st-output) .st-controls{grid-column:1!important;grid-row:1!important;width:auto!important;min-width:0;max-height:calc(100dvh - 180px);overflow:auto;padding:14px}
+.st-app.st-workspace-v2:not(.st-output) .st-saved-workspace{grid-column:2;grid-row:1;min-width:0;border:1px solid #405562;border-radius:14px;background:#15212a;padding:12px;display:flex;flex-direction:column;max-height:calc(100dvh - 180px)}
+.st-saved-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;flex:none}
+.st-app .st-saved-tabs>[aria-selected=true]{background:#ffe000;color:#101a22;border-color:#ffe000}
+.st-app.st-workspace-v2:not(.st-output) .st-saved-workspace>.st-agenda,.st-app.st-workspace-v2:not(.st-output) .st-saved-workspace>.st-message-presets{grid-column:auto!important;grid-row:auto!important;order:0!important;max-height:none!important;width:auto!important;overflow:auto!important;border:0;background:transparent;padding:0;min-height:0;scrollbar-gutter:stable}
+.st-app .st-saved-workspace .st-agenda-head h2,.st-app .st-saved-workspace .st-message-presets>h2{display:none}
+.st-app .st-saved-workspace .st-agenda-entry,.st-app .st-saved-workspace .st-message-preset-entry{display:grid!important;grid-template-columns:minmax(0,1fr) 52px 34px!important;gap:5px;align-items:stretch}
+.st-app .st-saved-edit{padding:5px!important;min-height:38px!important;font-size:12px!important}
+.st-saved-editor{display:grid;gap:10px;padding:12px 0}.st-saved-editor>.st-field{display:flex;flex-direction:column;gap:6px;font-size:13px}.st-saved-editor input,.st-saved-editor textarea{width:100%;min-width:0}.st-saved-editor textarea{min-height:84px}
+.st-app.st-workspace-v2:not(.st-output) .st-viewer{grid-column:3!important;grid-row:1!important;position:sticky!important;top:14px;min-width:0;width:100%;display:flex!important;flex-direction:column!important}
+.st-app.st-workspace-v2:not(.st-output) .st-viewer>.st-stage,.st-app.st-workspace-v2.st-clock-mode:not(.st-output) .st-stage{height:clamp(210px,30dvh,300px)!important;min-height:210px!important;width:100%;aspect-ratio:auto!important;padding:12px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.st-app .st-stage .st-digits{flex-shrink:0;max-width:100%;letter-spacing:0!important}
+.st-app .st-stage .st-title{max-height:none!important;overflow:visible!important;font-size:clamp(14px,2.8cqw,26px)!important;line-height:1.2;flex-shrink:0}
+.st-app .st-stage .st-message{max-width:96%;font-size:clamp(12px,2.8cqw,28px)!important;line-height:1.2;margin:5px 0;padding:5px 10px;flex-shrink:0}
+.st-app.st-workspace-v2:not(.st-output) .st-viewer .st-message-panel{flex:none!important;margin-top:12px}.st-app.st-workspace-v2:not(.st-output) .st-viewer .st-message-panel textarea{min-height:76px;max-height:140px;resize:vertical}
+.st-app.st-workspace-v2:not(.st-output) .st-viewer>.st-note{position:static!important;margin-top:8px!important}
+.st-app .st-stage .st-small-clock{font-size:clamp(12px,2cqw,22px)!important}
+.st-app .st-stage:fullscreen,.st-app.st-clock-mode .st-stage:fullscreen{height:100dvh!important;min-height:100dvh!important;padding:3dvh 3vw!important}
+.st-output .st-stage .st-digits{margin:0!important}
+@media(max-width:1050px){.st-app.st-workspace-v2:not(.st-output) .st-layout{grid-template-columns:minmax(210px,260px) minmax(0,1fr)!important}.st-app.st-workspace-v2:not(.st-output) .st-viewer{grid-column:2!important;grid-row:1!important}.st-app.st-workspace-v2:not(.st-output) .st-saved-workspace{grid-column:2;grid-row:2;max-height:460px}.st-app.st-workspace-v2:not(.st-output) .st-controls{grid-row:1/span 2!important}}
+@media(max-width:700px){.st-app.st-workspace-v2:not(.st-output) .st-layout{display:flex!important;flex-direction:column!important}.st-app.st-workspace-v2:not(.st-output) .st-viewer{order:0!important;position:static!important}.st-app.st-workspace-v2:not(.st-output) .st-controls{order:1!important;width:100%!important;max-height:none}.st-app.st-workspace-v2:not(.st-output) .st-saved-workspace{order:2!important;width:100%;max-height:520px}.st-app.st-workspace-v2:not(.st-output) .st-stage,.st-app.st-workspace-v2.st-clock-mode:not(.st-output) .st-stage{height:240px!important;min-height:240px!important}.st-app.st-workspace-v2:not(.st-output) .st-viewer .st-transport{grid-template-columns:repeat(2,minmax(0,1fr))}.st-app.st-workspace-v2:not(.st-output) .st-stage:fullscreen{height:100dvh!important;min-height:100dvh!important}}
+.st-app .st-saved-workspace .st-agenda-entry,.st-app .st-saved-workspace .st-message-preset-entry{grid-template-columns:minmax(0,1fr) 34px 34px!important}
+.st-app .st-saved-edit{display:flex;align-items:center;justify-content:center;min-width:34px;width:34px}.st-group-rename{margin:-3px 0 8px;display:flex;justify-content:flex-end;flex-wrap:wrap;gap:6px}.st-group-rename-form{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px;width:100%}.st-app .st-group-rename-form input{min-width:0;width:100%;min-height:38px;padding:5px 8px}.st-app .st-group-rename-form button{min-height:38px;padding:5px 8px;font-size:12px}
+
+/* Prevent legacy mode rules and intrinsic list widths from moving columns. */
+.st-app.st-workspace-v2 .st-saved-workspace{overflow:hidden;min-width:0}
+.st-app.st-workspace-v2 .st-saved-workspace>.st-agenda,.st-app.st-workspace-v2 .st-saved-workspace>.st-message-presets{min-width:0!important;max-width:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
+.st-app.st-workspace-v2 .st-saved-workspace .st-agenda-list,.st-app.st-workspace-v2 .st-saved-workspace .st-message-preset-list{overflow:visible!important;max-height:none!important;width:100%;min-width:0;box-sizing:border-box}
+.st-app.st-workspace-v2 .st-message-presets>.st-primary{display:block;width:100%;margin:10px 0}
+.st-app.st-workspace-v2 .st-saved-workspace .st-message-preset-entry{width:100%;min-width:0;max-width:100%;padding:0 0 2px}
+.st-app.st-workspace-v2 .st-message-preset-load{min-width:0!important;max-width:100%!important;overflow-wrap:anywhere}
+.st-app.st-workspace-v2:not(.st-output) .st-lap-display{position:static!important;width:100%!important;max-width:none!important;max-height:180px!important;overflow:auto;margin:10px 0;background:#101a22;border:1px solid #405562;border-radius:10px}
+.st-app.st-workspace-v2.st-stopwatch-mode:not(.st-output) .st-stage{padding:12px!important;height:clamp(210px,30dvh,300px)!important;min-height:210px!important;max-height:300px!important}
+.st-app.st-workspace-v2 .st-agenda-day>h3,.st-app.st-workspace-v2 .st-agenda-session>h4{display:inline-block!important;width:calc(100% - 42px);vertical-align:middle;margin:4px 0!important}
+.st-app.st-workspace-v2 .st-group-rename{display:inline-flex!important;vertical-align:middle;width:34px;margin:0 0 4px;position:relative}
+.st-app.st-workspace-v2 .st-group-rename:has(.st-group-rename-form:not([hidden])){display:flex!important;width:100%}
+.st-app.st-workspace-v2 .st-group-rename-form{flex-basis:100%}
+
+.st-app.st-workspace-v2 .st-saved-workspace[data-tab=messages]>.st-agenda,.st-app.st-workspace-v2 .st-saved-workspace[data-tab=times]>.st-message-presets,.st-app.st-workspace-v2 .st-saved-workspace [hidden]{display:none!important}
+
+.st-app.st-workspace-v2 .st-run-controls{display:grid;grid-template-columns:140px minmax(0,1fr);align-items:center;gap:10px;margin-top:12px}
+.st-app.st-workspace-v2 .st-run-controls>.st-output-visibility{margin:0;padding:8px 0;border:0;background:transparent;grid-template-columns:56px minmax(0,1fr)}
+.st-app.st-workspace-v2 .st-run-controls>.st-transport{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;gap:6px}
+.st-app.st-workspace-v2 .st-run-controls>.st-transport>button{padding:10px 5px!important;font-size:14px!important;min-height:46px;white-space:nowrap}
+@media(max-width:1200px){.st-app.st-workspace-v2 .st-run-controls{grid-template-columns:minmax(0,1fr)}.st-app.st-workspace-v2 .st-run-controls>.st-output-visibility{justify-self:start;width:180px}.st-app.st-workspace-v2 .st-run-controls>.st-transport{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.st-app.st-workspace-v2 .st-run-controls>[hidden]{display:none!important}
+.st-app.st-workspace-v2 .st-run-controls:has(>.st-transport[hidden]){grid-template-columns:minmax(0,1fr)}
+.st-app.st-workspace-v2 .st-saved-workspace .st-agenda-entry>*,.st-app.st-workspace-v2 .st-saved-workspace .st-message-preset-entry>*{min-width:0!important}
+.st-app.st-workspace-v2 .st-saved-workspace .st-agenda-delete,.st-app.st-workspace-v2 .st-saved-workspace .st-message-preset-delete,.st-app.st-workspace-v2 .st-saved-workspace .st-saved-edit{box-sizing:border-box!important;width:34px!important;min-width:34px!important;max-width:34px!important;min-height:38px!important;padding:3px!important}
+
+.st-app.st-workspace-v2:not(.st-output) .st-saved-workspace>.st-agenda,.st-app.st-workspace-v2:not(.st-output) .st-saved-workspace>.st-message-presets{width:100%!important;align-self:stretch!important;box-sizing:border-box!important;max-width:100%!important}
+
+.st-app.st-workspace-v2 .st-run-controls{grid-template-columns:185px minmax(0,1fr)}
+.st-app.st-workspace-v2 .st-run-controls>.st-output-visibility{width:185px;grid-template-columns:56px minmax(0,1fr);gap:10px}
+@media(max-width:1200px){.st-app.st-workspace-v2 .st-run-controls{grid-template-columns:minmax(0,1fr)}}
+
+/* Mode, visibility and window controls form one toolbar above the preview. */
+.st-app.st-workspace-v2 .st-viewer-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;min-width:0}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-mode-bar{flex:1 1 235px!important;min-width:0;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;position:static!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar .st-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%}
+.st-app.st-workspace-v2 .st-viewer-toolbar .st-modes>button{width:100%;min-width:0;padding:8px 5px;font-size:13px;min-height:42px;white-space:nowrap}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility{flex:0 0 185px;display:grid;width:185px;margin:0;padding:6px 0;border:0;background:transparent;grid-template-columns:56px minmax(0,1fr);gap:10px}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-view-icon-group{display:flex;flex:0 0 auto;margin:0!important;gap:6px;position:static!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar .st-view-icon{flex:0 0 42px;width:42px;min-width:42px;height:42px;min-height:42px;padding:8px}
+.st-app.st-workspace-v2 .st-run-controls{display:block!important}.st-app.st-workspace-v2 .st-run-controls>.st-transport{width:100%}
+@media(max-width:700px){.st-app.st-workspace-v2 .st-viewer-toolbar>.st-mode-bar{flex-basis:100%!important}.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility{margin-right:auto}}
+
+.st-app.st-output.st-stopwatch-mode .st-stage{padding:12px!important}
+
+/* Stable geometry across timer, stopwatch and clock. Real lap history is below the message editor. */
+.st-app.st-workspace-v2:not(.st-output) .st-viewer>.st-stage,.st-app.st-workspace-v2.st-clock-mode:not(.st-output) .st-viewer>.st-stage,.st-app.st-workspace-v2.st-stopwatch-mode:not(.st-output) .st-viewer>.st-stage{height:clamp(210px,30dvh,300px)!important;min-height:210px!important;max-height:300px!important}
+.st-app.st-workspace-v2:not(.st-output) .st-viewer>.st-message-panel{height:180px!important;min-height:180px!important;max-height:180px!important;flex:0 0 180px!important;width:100%;box-sizing:border-box}
+.st-app.st-workspace-v2 .st-run-controls>.st-transport>button{height:46px!important;min-height:46px!important;max-height:46px!important}
+.st-app.st-workspace-v2 .st-lap-display:not(:has(.st-lap-row)),.st-app.st-output .st-lap-display:not(:has(.st-lap-row)){display:none!important}
+@media(max-width:700px){.st-app.st-workspace-v2:not(.st-output) .st-viewer>.st-stage,.st-app.st-workspace-v2.st-clock-mode:not(.st-output) .st-viewer>.st-stage,.st-app.st-workspace-v2.st-stopwatch-mode:not(.st-output) .st-viewer>.st-stage{height:240px!important;min-height:240px!important;max-height:240px!important}}
+.st-app.st-workspace-v2:not(.st-output) .st-viewer>.st-stage:fullscreen{height:100dvh!important;min-height:100dvh!important;max-height:none!important}
+
+.st-app.st-workspace-v2 .st-run-controls:has(>.st-transport[hidden]){display:none!important;margin:0!important;height:0!important;min-height:0!important}
+
+.st-app.st-workspace-v2 .st-viewer-toolbar{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;align-self:stretch!important}
+
+/* Visibility uses the same control surface and baseline as the suite buttons. */
+.st-app.st-workspace-v2 .st-viewer-toolbar{align-items:flex-end!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility{flex:0 0 200px!important;width:200px!important;height:46px!important;min-height:46px!important;box-sizing:border-box!important;padding:4px 10px!important;background:#202f39!important;border:1px solid #61727f!important;border-radius:9px!important;align-items:center!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar .st-modes>button,.st-app.st-workspace-v2 .st-viewer-toolbar .st-view-icon{height:44px!important;min-height:44px!important;max-height:44px!important}
+
+/* SHOW is a selected suite action; HIDE uses the neutral control surface. */
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility{color:#f4f6f8!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility:has(input:checked){background:#ffe000!important;border-color:#ffe000!important;color:#101820!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility>span{color:inherit!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility>input[type=checkbox][role=switch]:checked{background:#202f39!important;border-color:#61727f!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility>input[type=checkbox][role=switch]::before{background:#fff!important}
+
+/* Yellow applies only to the SHOW switch track. The button surface remains neutral. */
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility:has(input:checked){background:#202f39!important;border-color:#61727f!important;color:#f4f6f8!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility>input[type=checkbox][role=switch]:checked{background:#ffe000!important;border-color:#ffe000!important}
+.st-app.st-workspace-v2 .st-viewer-toolbar>.st-output-visibility>input[type=checkbox][role=switch]:checked::before{background:#101820!important}
+
+/* Clock preserves the message row using layout space, not inactive controls. */
+.st-app.st-workspace-v2 .st-run-controls:has(>.st-transport[hidden]){display:block!important;height:46px!important;min-height:46px!important;max-height:46px!important;margin:12px 0 0!important;padding:0!important;visibility:hidden!important}
+.st-app.st-workspace-v2 .st-run-controls>.st-transport[hidden]{display:none!important}
+
+/* Desktop: settings on the left, presenter controls in the centre, saved items on the right. */
+@media(min-width:1051px){
+ .st-app.st-workspace-v2:not(.st-output) .st-layout{grid-template-columns:minmax(220px,260px) minmax(0,1fr) minmax(260px,340px)!important}
+ .st-app.st-workspace-v2:not(.st-output) .st-viewer{grid-column:2!important;grid-row:1!important}
+ .st-app.st-workspace-v2:not(.st-output) .st-saved-workspace{grid-column:3!important;grid-row:1!important}
+}

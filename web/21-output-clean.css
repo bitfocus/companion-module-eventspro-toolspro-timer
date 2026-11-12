@@ -1,0 +1,48 @@
+html.st-speaker-output,
+html.st-speaker-output body {
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 100%;
+	height: 100%;
+	overflow: hidden !important;
+}
+html.st-speaker-output .ep-body,
+html.st-speaker-output .st-output,
+html.st-speaker-output .st-layout,
+html.st-speaker-output .st-viewer {
+	margin: 0 !important;
+	padding: 0 !important;
+	max-width: none !important;
+	width: 100vw !important;
+	height: 100dvh !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+}
+html.st-speaker-output .st-output .st-stage {
+	margin: 0 !important;
+	position: fixed !important;
+	inset: 0 !important;
+	width: 100vw !important;
+	height: 100dvh !important;
+	min-height: 100dvh !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	aspect-ratio: auto !important;
+	box-shadow: none !important;
+}
+html.st-speaker-output .st-output .st-progress,
+html.st-speaker-output .st-output .st-view-buttons,
+html.st-speaker-output .st-output .st-note {
+	display: none !important;
+}
+html.st-alpha-output,
+html.st-alpha-output body,
+html.st-alpha-output .ep-body,
+html.st-alpha-output .st-output,
+html.st-alpha-output .st-viewer {
+	background: transparent !important;
+}
+html.st-speaker-output .st-output .st-title,
+html.st-speaker-output .st-output .st-status {
+	display: none !important;
+}

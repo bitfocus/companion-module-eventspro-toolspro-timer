@@ -224,3 +224,44 @@
 .st-app .st-stage:fullscreen:has(.st-message:not([hidden])):has(.st-lap-display:not([hidden])) {
   --st-fullscreen-digit-height:20dvh;
 }
+
+/* Operator controls stay visible; only presenter content is hidden. */
+.st-output-hidden > * { visibility:hidden!important; }
+.st-output-visibility{display:flex;align-items:center;gap:12px;font-weight:700;padding:12px;border:1px solid #ffe000;border-radius:10px}.st-output-visibility input{appearance:none;width:56px;height:30px;border-radius:18px;background:#53616a;position:relative;cursor:pointer}.st-output-visibility input:checked{background:#137a42}.st-output-visibility input:before{content:'';position:absolute;width:22px;height:22px;border-radius:50%;background:white;left:4px;top:4px;transition:transform .15s}.st-output-visibility input:checked:before{transform:translateX(26px)}.st-chroma-presets{display:flex;gap:8px;flex-wrap:wrap}
+
+html.st-alpha-output,html.st-alpha-output body,html.st-alpha-output .ep-body,html.st-alpha-output .st-app,html.st-alpha-output .st-viewer{background:transparent!important}
+
+/* Fixed switch dimensions: resist shared form input sizing. */
+.st-app .st-output-visibility{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:center;gap:10px;min-width:0;cursor:pointer}
+.st-app .st-output-visibility>input[type="checkbox"][role="switch"]{appearance:none!important;-webkit-appearance:none!important;display:block!important;position:relative!important;box-sizing:border-box!important;flex:none!important;width:56px!important;min-width:56px!important;max-width:56px!important;height:30px!important;min-height:30px!important;max-height:30px!important;margin:0!important;padding:0!important;border:0!important;border-radius:999px!important;background:#53616a;vertical-align:middle;overflow:hidden;cursor:pointer}
+.st-app .st-output-visibility>input[type="checkbox"][role="switch"]::before{content:"";position:absolute!important;box-sizing:border-box;width:22px!important;height:22px!important;left:4px!important;top:4px!important;border:0!important;border-radius:50%!important;background:#fff;transform:translateX(0);transition:transform .15s}
+.st-app .st-output-visibility>input[type="checkbox"][role="switch"]:checked{background:#137a42}
+.st-app .st-output-visibility>input[type="checkbox"][role="switch"]:checked::before{transform:translateX(26px)}
+.st-app .st-output-visibility>input[type="checkbox"][role="switch"]:focus-visible{outline:3px solid #ffe000!important;outline-offset:3px}
+.st-app .st-output-visibility>span{min-width:0;font-size:14px;line-height:1.35;overflow-wrap:normal;word-break:normal}
+
+/* Presets and their help occupy the whole settings grid. */
+.st-app .st-settings-body>.st-chroma-presets,.st-app .st-chroma-presets{grid-column:1/-1!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important;width:100%!important;min-width:0!important;max-width:100%!important}
+.st-app .st-chroma-presets>select{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;min-height:42px!important;font-size:14px!important;box-sizing:border-box!important;padding:8px 30px 8px 10px!important}
+.st-app .st-chroma-presets>.st-note{grid-column:1/-1!important;display:block!important;width:100%!important;max-width:none!important;font-size:13px!important;line-height:1.45!important;white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important}
+
+/* Preset creation belongs beside the saved agenda, not in settings. */
+.st-app .st-agenda>.st-agenda-add{margin:12px 0;padding:12px;border:1px solid #61727f;border-radius:10px;background:#101a22;width:100%}
+.st-app .st-agenda>.st-agenda-add>summary{color:#ffe000;font-size:14px;font-weight:700;line-height:1.4;cursor:pointer;padding:4px 0}
+.st-app .st-agenda>.st-agenda-add .st-agenda-form{grid-template-columns:minmax(0,1fr);gap:10px;margin:10px 0 0;padding:0;border:0}
+.st-app .st-agenda>.st-agenda-add .st-agenda-form input,.st-app .st-agenda>.st-agenda-add .st-agenda-form select{width:100%;min-width:0;min-height:42px}
+.st-app .st-presets{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.st-app .st-controls .st-presets>button{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;min-height:58px!important;padding:6px 4px!important;white-space:nowrap!important;line-height:1.2!important}
+.st-app .st-presets .st-preset-value{display:block;font-size:16px;font-weight:700;line-height:1.2}
+.st-app .st-presets .st-preset-unit{display:block;font-size:12px;font-weight:500;line-height:1.2}
+
+.st-app .st-output-visibility>span{white-space:pre-line!important;line-height:1.35!important;min-height:38px;display:block;text-align:left}
+
+.st-app .st-output-visibility>span{font-size:13px!important;min-height:36px;line-height:18px!important}
+
+.st-app .st-output-visibility>span{font-size:15px!important;white-space:nowrap!important;min-height:0;line-height:22px!important}
+
+.st-app .st-output-visibility>span{font-size:12px!important;font-weight:500!important;white-space:pre-line!important;min-height:36px;line-height:18px!important}
+.st-app .st-output-visibility>span::first-line{font-size:15px;font-weight:700}
+
+.st-app .st-message-presets>.st-field{display:flex;flex-direction:column;gap:6px;width:100%;margin:10px 0;font-size:13px;color:#c5d0d9}.st-app .st-message-presets textarea{width:100%;min-width:0;min-height:84px;resize:vertical;padding:10px;font:inherit;color:#f4f6f8;background:#101a22;border:1px solid #61727f;border-radius:9px}.st-app .st-message-presets>.st-field input{width:100%;min-height:42px}
