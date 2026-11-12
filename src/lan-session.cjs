@@ -53,7 +53,10 @@ class Session {
 			state: this.state,
 			display: {
 				text: d.text,
-				seconds: Math.round(d.ms / 1000),
+				outputVisible: this.state.outputVisible,
+				backgroundColor: this.state.backgroundColor,
+				digitColor: this.state.digitColor,
+				seconds: Math.ceil(d.ms / 1000),
 				phase: d.phase,
 				running: this.state.running,
 				title: this.state.title,
@@ -62,27 +65,33 @@ class Session {
 			},
 			presets: this.presets,
 			messages: this.messages,
-			remote: { connected: Date.now() - this.remoteSeen < 5000, device: this.device },
+			remote: {
+				connected: Date.now() - this.remoteSeen < 5000,
+				device: this.device,
+			},
 		}
 	}
 	request(body, agent = '') {
 		if (body.op === 'owner') {
 			if (typeof body.client !== 'string' || !/^[a-f0-9]{64}$/.test(body.client)) throw Error('Invalid client')
 			if (this.owner && this.owner !== body.client && Date.now() - this.ownerSeen < 10000)
-				return { status: 409, body: { error: 'Timer ya está abierto en otro equipo' } }
+				return {
+					status: 409,
+					body: { error: 'Timer is already open on another computer' },
+				}
 			this.owner = body.client
 			this.ownerSeen = Date.now()
 			return { status: 200, body: { ...this.snapshot(), control: this.token } }
 		}
 		const owner = body.client === this.owner && this.owner !== null
-		if (!owner && body.control !== this.token) return { status: 403, body: { error: 'Vinculación no válida' } }
+		if (!owner && body.control !== this.token) return { status: 403, body: { error: 'Invalid pairing' } }
 		if (owner) {
 			if (body.op === 'sync' && body.revision === this.revision) {
 				if (
 					(body.presets !== undefined && !validCatalog(body.presets, 200)) ||
 					(body.messages !== undefined && !validCatalog(body.messages, 30, true))
 				) {
-					return { status: 400, body: { error: 'Catálogo de Timer no válido' } }
+					return { status: 400, body: { error: 'Invalid Timer catalog' } }
 				}
 				if (body.changed) {
 					this.state = C.restore(body.state)
@@ -94,7 +103,7 @@ class Session {
 			this.ownerSeen = Date.now()
 		} else {
 			this.remoteSeen = Date.now()
-			this.device = /iPhone/i.test(agent) ? 'iPhone' : /Android/i.test(agent) ? 'Android' : 'Navegador móvil'
+			this.device = /iPhone/i.test(agent) ? 'iPhone' : /Android/i.test(agent) ? 'Android' : 'Mobile browser'
 		}
 		if (body.op === 'command') return { status: 200, body: this.command(body.command) }
 		return { status: 200, body: this.snapshot() }

@@ -8,16 +8,24 @@ module.exports = (base) =>
 				{
 					type: 'dropdown',
 					id: 'transport',
-					label: 'Conexión Timer',
+					label: this.t('Conexión de Timer', 'Timer connection'),
+					width: 12,
 					default: this.config?.transport || 'lan',
 					choices: [
-						{ id: 'lan', label: 'Timer en navegador por red local' },
-						{ id: 'osc', label: 'Timer instalado (OSC)' },
+						{ id: 'lan', label: this.t('Timer en navegador por red local', 'Timer in browser over local network') },
+						{ id: 'osc', label: this.t('Timer instalado (OSC)', 'Installed Timer (OSC)') },
 					],
 				},
-				...super
-					.getConfigFields()
-					.map((f) => (f.id === 'language' ? f : { ...f, isVisibleExpression: "$(options:transport) === 'osc'" })),
+				...super.getConfigFields().map((f) =>
+					f.id === 'language'
+						? f
+						: {
+								...f,
+								isVisibleExpression: f.isVisibleExpression
+									? `(${f.isVisibleExpression}) && $(options:transport) === 'osc'`
+									: "$(options:transport) === 'osc'",
+							},
+				),
 			]
 		}
 		async configUpdated(config) {
@@ -26,7 +34,7 @@ module.exports = (base) =>
 				return super.configUpdated({ ...config, transport: 'osc' })
 			}
 			if (!this.lan) await this.destroy()
-			this.config = { language: 'es', ...config }
+			this.config = { language: 'en', ...config }
 			if (!this.lan) {
 				this.lan = new Session()
 				this.catalog = []
@@ -43,7 +51,8 @@ module.exports = (base) =>
 				}
 			}
 			this.define()
-			this.updateStatus(base.InstanceStatus.Ok, 'Timer disponible en la red local')
+			this.lanOnline = undefined
+			this.updateLAN()
 			clearInterval(this.lanTick)
 			this.lanTick = setInterval(() => {
 				try {
@@ -60,6 +69,13 @@ module.exports = (base) =>
 		updateLAN() {
 			if (!this.lan) return
 			const s = this.lan.snapshot()
+			if (s.online !== this.lanOnline) {
+				this.lanOnline = s.online
+				this.updateStatus(
+					s.online ? base.InstanceStatus.Ok : base.InstanceStatus.Connecting,
+					s.online ? this.t('Timer disponible en la red local', 'Timer available on the local network') : this.t('Abre la página de Timer', 'Open the Timer page'),
+				)
+			}
 			this.state = {
 				...this.state,
 				...s.display,
@@ -68,7 +84,12 @@ module.exports = (base) =>
 				connected: s.online,
 			}
 			const catalog = s.presets
-				.map((p) => ({ id: p.id, name: p.name, day: p.day, session: p.session }))
+				.map((p) => ({
+					id: p.id,
+					name: p.name,
+					day: p.day,
+					session: p.session,
+				}))
 				.concat(s.messages.map((p) => ({ ...p, kind: 'message' })))
 			if (JSON.stringify(catalog) !== JSON.stringify(this.catalog)) {
 				this.catalog = catalog
@@ -89,7 +110,7 @@ module.exports = (base) =>
 			}
 		}
 		handleHttpRequest(req) {
-			if (!this.lan) return { status: 404, body: 'Modo OSC' }
+			if (!this.lan) return { status: 404, body: 'OSC mode' }
 			const headers = {
 				'Cache-Control': 'no-store',
 				'X-Content-Type-Options': 'nosniff',
@@ -109,7 +130,13 @@ module.exports = (base) =>
 				}
 				if (req.method !== 'GET') return { status: 405, body: 'Method not allowed' }
 				if (route === '')
-					return { status: 302, headers: { Location: req.baseUrl.replace(/\/$/, '') + '/index.html' }, body: '' }
+					return {
+						status: 302,
+						headers: {
+							Location: req.baseUrl.replace(/\/$/, '') + '/index.html',
+						},
+						body: '',
+					}
 				if (!/^[a-zA-Z0-9_.-]+$/.test(route)) return { status: 404, body: 'Not found' }
 				if (!Object.hasOwn(assets, route)) return { status: 404, body: 'Not found' }
 				return {
