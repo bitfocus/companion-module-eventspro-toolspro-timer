@@ -1,0 +1,9 @@
+const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const file=require.resolve('../web/02-speaker-timer-ui.js');
+const root={location:{pathname:"/index.html"}};root.window=root;vm.runInNewContext(fs.readFileSync(file,'utf8'),root);const api=root.EventsPROSpeakerTimerUI;
+const entries=[{id:'a',day:'D1',session:'S1',name:'Ana',state:{duration:60000}},{id:'b',day:'D1',session:'S2',name:'Bob',state:{duration:120000}},{id:'c',day:'D2',session:'S1',name:'Cam',state:{duration:180000}}];
+test('rename session affects only its day and preserves ids and timer states',()=>{const out=api.renamePresetGroup(entries,'D1','S1',' New ');assert.equal(out[0].session,'New');assert.equal(out[1].session,'S2');assert.equal(out[2].session,'S1');out.forEach((x,i)=>{assert.equal(x.id,entries[i].id);assert.equal(x.state,entries[i].state)});assert.equal(entries[0].session,'S1')});
+test('rename day includes its sessions without changing another day',()=>{const out=api.renamePresetGroup(entries,'D1',null,'Day one');assert.equal(out[0].day,'Day one');assert.equal(out[1].day,'Day one');assert.equal(out[2].day,'D2');assert.equal(out[1].session,'S2');assert.throws(()=>api.renamePresetGroup(entries,'D1',null,'  '))});
+test('font scales for hours, hundredths, negative values and viewport height',()=>{const short=api.fitFontSize(600,200,300),long=api.fitFontSize(600,200,750);assert.ok(short>long);for(const width of [240,390,600,1280])for(const height of [80,140,210,720])for(const chars of [5,8,9,12]){const measured=chars*60;const size=api.fitFontSize(width,height,measured);assert.ok(size*measured/100<=width+.01);assert.ok(size*1.16<=height+.01)}});
+
+test('preset labels preserve exact seconds without rounding to another minute',()=>{assert.equal(api.formatPresetDuration(750000),'12 min 30 s');assert.equal(api.formatPresetDuration(600000),'10 min');assert.equal(api.formatPresetDuration(30000),'0 min 30 s')});
