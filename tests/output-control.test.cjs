@@ -60,7 +60,7 @@ test('new Companion visibility controls are additive and transport-agnostic', ()
 		}
 		checkFeedbacks() {}
 	}
-	const M = require('../src/module.js')({ InstanceBase: Host }),
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: Host }),
 		m = new M()
 	m.state = { connected: true, outputVisible: false }
 	m.catalog = []
