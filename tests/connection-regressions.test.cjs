@@ -48,7 +48,7 @@ test('real UDP OSC initial timeout reports failure and recovery immediately refr
 	await once(reserve, 'close')
 	const seen = []
 	server.on('message', (p) => seen.push(...decode(p).map((m) => m.address)))
-	const M = require('../src/module.js')({ InstanceBase: Host, InstanceStatus: statuses }),
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: Host, InstanceStatus: statuses }),
 		m = new M()
 	t.after(() => m.destroy())
 	await m.init({ host: '127.0.0.1', port: server.address().port, feedbackPort })
@@ -66,7 +66,7 @@ test('real UDP OSC initial timeout reports failure and recovery immediately refr
 	assert(seen.slice(before).includes('/eventspro/timer/presets'))
 })
 test('LAN idle refresh does not resend unchanged variables or feedback', async (t) => {
-	const M = require('../src/lan-module.cjs')({ InstanceBase: Host, InstanceStatus: statuses }),
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: Host, InstanceStatus: statuses }),
 		m = new M()
 	await m.init({ transport: 'lan' })
 	t.after(() => m.destroy())

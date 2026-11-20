@@ -17,7 +17,7 @@ test('English defaults and intentional readable variable names retain IDs', () =
 		setPresetDefinitions() {}
 		checkFeedbacks() {}
 	}
-	const M = require('../src/module.js')({ InstanceBase: Host }),
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: Host }),
 		m = new M()
 	m.catalog = []
 	m.state = {}
@@ -33,14 +33,14 @@ test('display seconds follow the same countdown rounding including overtime', ()
 	assert.equal(s.snapshot().display.seconds, -5)
 })
 test('advanced configuration visibility preserves both conditions', () => {
-	const M = require('../src/lan-module.cjs')({ InstanceBase: class {} })
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: class {} })
 	const fields = new M().getConfigFields()
 	assert.match(fields.find((v) => v.id === 'listenIp').isVisibleExpression, /advanced/)
 	assert.match(fields.find((v) => v.id === 'listenIp').isVisibleExpression, /transport/)
 	assert.equal(fields[0].width, 12)
 })
 test('open owner reclaims after module restart without resetting running clock', async (t) => {
- t.mock.timers.enable({apis:['Date'],now:Date.now()});
+	t.mock.timers.enable({ apis: ['Date'], now: Date.now() })
 	const original = new Session()
 	const client = 'a'.repeat(64)
 	original.request({ op: 'owner', client })

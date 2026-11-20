@@ -13,9 +13,9 @@ See [connection help](companion/HELP.md) for setup and limitations.
 
 ## Development
 
-Requires Node.js 22.18 or newer within major 22 and Yarn 4. Dependencies and lockfile are managed with Yarn. `yarn install --immutable`, `yarn test`, `yarn package`.
+Requires Node.js 22.18 or newer within major 22 and Yarn 4. Dependencies and lockfile are managed with Yarn. `yarn install --immutable`, `yarn build:web`, `yarn test`, `yarn package`. The package script retains the official template command. Actions, feedbacks, variables and presets are maintained in their corresponding `src/` files; `src/main.js` owns the module lifecycle. Tests reject any divergence between tracked web sources and the bundle served by Companion.
 
-Module ID: `eventspro-toolspro-timer`. Version: 1.3.0 candidate. Existing action, feedback, variable, preset and OSC command IDs are retained. Module API remains 1.13.6 and the official shared build supports runtime node22.
+Module ID: `eventspro-toolspro-timer`. Version: 1.3.1 candidate. Existing action, feedback, variable, preset and OSC command IDs are retained. Module API is 1.14.1 and the official shared build supports runtime node22.
 
 ## Validation limits
 

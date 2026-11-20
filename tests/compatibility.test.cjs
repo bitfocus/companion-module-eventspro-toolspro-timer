@@ -25,7 +25,7 @@ class Host {
 	log() {}
 }
 function definitions(root, language = 'es') {
-	const M = require(root + '/src/module.js')({ InstanceBase: Host, InstanceStatus: {} }),
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: Host, InstanceStatus: {} }),
 		m = new M()
 	m.config = { language }
 	m.catalog = [
@@ -53,8 +53,14 @@ test('existing IDs, options, feedbacks, variables and preset definitions match 1
 			b.variables.filter((v) => v.variableId !== 'output_visible').map((v) => v.variableId),
 			a.variables.map((v) => v.variableId),
 		)
-		for (const [id, hash] of Object.entries(a.presets))
-			assert.equal(crypto.createHash('sha256').update(JSON.stringify(b.presets[id])).digest('hex'), hash, id)
+		for (const [id, hash] of Object.entries(a.presets)) {
+			const current = { ...b.presets[id] }
+			if (id === 'time') {
+				assert.equal(current.name, language === 'es' ? 'Visor del contador' : 'Timer display')
+				current.name = current.style.text // Only the reviewed display-name change is exempt from the old hash.
+			}
+			assert.equal(crypto.createHash('sha256').update(JSON.stringify(current)).digest('hex'), hash, id)
+		}
 		assert.deepEqual(
 			Object.keys(b.presets)
 				.filter((id) => !a.presets[id])
@@ -73,7 +79,7 @@ test('existing IDs, options, feedbacks, variables and preset definitions match 1
 	}
 })
 test('new duration presets prepare the verified native durations without starting', async (t) => {
-	const M = require('../src/lan-module.cjs')({ InstanceBase: Host, InstanceStatus: { Ok: 'ok' } }),
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: Host, InstanceStatus: { Ok: 'ok' } }),
 		m = new M()
 	await m.init({ transport: 'lan' })
 	t.after(() => m.destroy())
@@ -86,7 +92,7 @@ test('new duration presets prepare the verified native durations without startin
 	}
 })
 test('memory preset reuses existing lap command and stopwatch icon', async (t) => {
-	const M = require('../src/lan-module.cjs')({ InstanceBase: Host, InstanceStatus: { Ok: 'ok' } }),
+	const M = require('./helpers/load-module.cjs')({ InstanceBase: Host, InstanceStatus: { Ok: 'ok' } }),
 		m = new M()
 	await m.init({ transport: 'lan' })
 	t.after(() => m.destroy())

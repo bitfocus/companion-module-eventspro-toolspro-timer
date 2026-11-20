@@ -4,7 +4,7 @@
 	"name": "EventsPRO - Timer PRO",
 	"shortname": "Timer PRO",
 	"description": "Timer PRO with local-network and OSC control, speaker output visibility and chroma presets",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-eventspro-toolspro-timer.git",
 	"bugs": "https://github.com/bitfocus/companion-module-eventspro-toolspro-timer/issues",
