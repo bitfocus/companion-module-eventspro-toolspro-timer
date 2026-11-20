@@ -1,5 +1,12 @@
 # Changes
 
+## 1.3.1
+
+- Follow the API 1 template structure, retain action/configuration IDs, and update dependency ranges and lockfile.
+- Resolve text variables before sending speaker messages and titles.
+- Validate remote OSC feedback binding and IP fields, report rejected speaker catalogues, and report each connection outage once.
+- Give the clock preset a readable name and verify bundled web resources against their source files.
+
 ## 1.3.0 candidate
 
 - Default Companion controls, embedded Timer, mobile remote and help to English. Existing Spanish Companion labels remain available through the language option.
